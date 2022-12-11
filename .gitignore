@@ -1,0 +1,11 @@
+*.pyc
+*.idea
+.env
+env
+venv
+.venv
+*.json
+*.db
+__pycache__/
+*.txt
+!requirements.txt

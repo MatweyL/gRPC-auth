@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+service AuthService {
+  rpc Register(RegistrationData) returns (stream Response) {}
+  rpc Auth(AuthData) returns (stream Response) {}
+  rpc ChangeNickname(NewNicknameData) returns (stream Response) {}
+  rpc Logout(LogoutData) returns (stream Response) {}
+}
+
+message RegistrationData {
+  string nickname = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message AuthData {
+  string login = 1;
+  string password = 2;
+}
+
+message NewNicknameData {
+  string new_nickname = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message LogoutData {
+  string login = 1;
+  string password = 3;
+}
+
+message Response {
+  bool success = 1;
+  string nickname = 2;
+  string login = 3;
+  string info = 4;
+}
