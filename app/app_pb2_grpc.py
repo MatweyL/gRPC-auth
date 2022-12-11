@@ -14,25 +14,25 @@ class AuthServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Register = channel.unary_stream(
+        self.Register = channel.unary_unary(
                 '/AuthService/Register',
                 request_serializer=app__pb2.RegistrationData.SerializeToString,
-                response_deserializer=app__pb2.Response.FromString,
+                response_deserializer=app__pb2.ResponseData.FromString,
                 )
-        self.Auth = channel.unary_stream(
+        self.Auth = channel.unary_unary(
                 '/AuthService/Auth',
                 request_serializer=app__pb2.AuthData.SerializeToString,
-                response_deserializer=app__pb2.Response.FromString,
+                response_deserializer=app__pb2.ResponseData.FromString,
                 )
-        self.ChangeNickname = channel.unary_stream(
+        self.ChangeNickname = channel.unary_unary(
                 '/AuthService/ChangeNickname',
                 request_serializer=app__pb2.NewNicknameData.SerializeToString,
-                response_deserializer=app__pb2.Response.FromString,
+                response_deserializer=app__pb2.ResponseData.FromString,
                 )
-        self.Logout = channel.unary_stream(
+        self.Logout = channel.unary_unary(
                 '/AuthService/Logout',
                 request_serializer=app__pb2.LogoutData.SerializeToString,
-                response_deserializer=app__pb2.Response.FromString,
+                response_deserializer=app__pb2.ResponseData.FromString,
                 )
 
 
@@ -66,25 +66,25 @@ class AuthServiceServicer(object):
 
 def add_AuthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Register': grpc.unary_stream_rpc_method_handler(
+            'Register': grpc.unary_unary_rpc_method_handler(
                     servicer.Register,
                     request_deserializer=app__pb2.RegistrationData.FromString,
-                    response_serializer=app__pb2.Response.SerializeToString,
+                    response_serializer=app__pb2.ResponseData.SerializeToString,
             ),
-            'Auth': grpc.unary_stream_rpc_method_handler(
+            'Auth': grpc.unary_unary_rpc_method_handler(
                     servicer.Auth,
                     request_deserializer=app__pb2.AuthData.FromString,
-                    response_serializer=app__pb2.Response.SerializeToString,
+                    response_serializer=app__pb2.ResponseData.SerializeToString,
             ),
-            'ChangeNickname': grpc.unary_stream_rpc_method_handler(
+            'ChangeNickname': grpc.unary_unary_rpc_method_handler(
                     servicer.ChangeNickname,
                     request_deserializer=app__pb2.NewNicknameData.FromString,
-                    response_serializer=app__pb2.Response.SerializeToString,
+                    response_serializer=app__pb2.ResponseData.SerializeToString,
             ),
-            'Logout': grpc.unary_stream_rpc_method_handler(
+            'Logout': grpc.unary_unary_rpc_method_handler(
                     servicer.Logout,
                     request_deserializer=app__pb2.LogoutData.FromString,
-                    response_serializer=app__pb2.Response.SerializeToString,
+                    response_serializer=app__pb2.ResponseData.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -107,9 +107,9 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/AuthService/Register',
+        return grpc.experimental.unary_unary(request, target, '/AuthService/Register',
             app__pb2.RegistrationData.SerializeToString,
-            app__pb2.Response.FromString,
+            app__pb2.ResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -124,9 +124,9 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/AuthService/Auth',
+        return grpc.experimental.unary_unary(request, target, '/AuthService/Auth',
             app__pb2.AuthData.SerializeToString,
-            app__pb2.Response.FromString,
+            app__pb2.ResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,9 +141,9 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/AuthService/ChangeNickname',
+        return grpc.experimental.unary_unary(request, target, '/AuthService/ChangeNickname',
             app__pb2.NewNicknameData.SerializeToString,
-            app__pb2.Response.FromString,
+            app__pb2.ResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,8 +158,8 @@ class AuthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/AuthService/Logout',
+        return grpc.experimental.unary_unary(request, target, '/AuthService/Logout',
             app__pb2.LogoutData.SerializeToString,
-            app__pb2.Response.FromString,
+            app__pb2.ResponseData.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

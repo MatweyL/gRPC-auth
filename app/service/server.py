@@ -53,8 +53,7 @@ class Server(app.app_pb2_grpc.AuthServiceServicer):
         password = get_md5(request.password)
         if (login, password) in self._active_users:
             if not self._db.exists_nickname(new_nickname):
-                user = self._db.get(login, password)
-                user["nickname"] = new_nickname
+                self._db.change_user_nickname(login, password, new_nickname)
                 info = "Никнейм был успешно изменен"
             else:
                 success = False

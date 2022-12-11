@@ -40,7 +40,7 @@ class RegistrationData(_message.Message):
     password: str
     def __init__(self, nickname: _Optional[str] = ..., login: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
 
-class Response(_message.Message):
+class ResponseData(_message.Message):
     __slots__ = ["info", "login", "nickname", "success"]
     INFO_FIELD_NUMBER: _ClassVar[int]
     LOGIN_FIELD_NUMBER: _ClassVar[int]

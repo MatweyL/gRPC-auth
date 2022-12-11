@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tapp.proto\"E\n\x10RegistrationData\x12\x10\n\x08nickname\x18\x01 \x01(\t\x12\r\n\x05login\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"+\n\x08\x41uthData\x12\r\n\x05login\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"H\n\x0fNewNicknameData\x12\x14\n\x0cnew_nickname\x18\x01 \x01(\t\x12\r\n\x05login\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"-\n\nLogoutData\x12\r\n\x05login\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"J\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05login\x18\x03 \x01(\t\x12\x0c\n\x04info\x18\x04 \x01(\t2\xb6\x01\n\x0b\x41uthService\x12,\n\x08Register\x12\x11.RegistrationData\x1a\t.Response\"\x00\x30\x01\x12 \n\x04\x41uth\x12\t.AuthData\x1a\t.Response\"\x00\x30\x01\x12\x31\n\x0e\x43hangeNickname\x12\x10.NewNicknameData\x1a\t.Response\"\x00\x30\x01\x12$\n\x06Logout\x12\x0b.LogoutData\x1a\t.Response\"\x00\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tapp.proto\"E\n\x10RegistrationData\x12\x10\n\x08nickname\x18\x01 \x01(\t\x12\r\n\x05login\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"+\n\x08\x41uthData\x12\r\n\x05login\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"H\n\x0fNewNicknameData\x12\x14\n\x0cnew_nickname\x18\x01 \x01(\t\x12\r\n\x05login\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"-\n\nLogoutData\x12\r\n\x05login\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\"N\n\x0cResponseData\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05login\x18\x03 \x01(\t\x12\x0c\n\x04info\x18\x04 \x01(\t2\xbe\x01\n\x0b\x41uthService\x12.\n\x08Register\x12\x11.RegistrationData\x1a\r.ResponseData\"\x00\x12\"\n\x04\x41uth\x12\t.AuthData\x1a\r.ResponseData\"\x00\x12\x33\n\x0e\x43hangeNickname\x12\x10.NewNicknameData\x1a\r.ResponseData\"\x00\x12&\n\x06Logout\x12\x0b.LogoutData\x1a\r.ResponseData\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'app_pb2', globals())
@@ -28,8 +28,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _NEWNICKNAMEDATA._serialized_end=201
   _LOGOUTDATA._serialized_start=203
   _LOGOUTDATA._serialized_end=248
-  _RESPONSE._serialized_start=250
-  _RESPONSE._serialized_end=324
-  _AUTHSERVICE._serialized_start=327
-  _AUTHSERVICE._serialized_end=509
+  _RESPONSEDATA._serialized_start=250
+  _RESPONSEDATA._serialized_end=328
+  _AUTHSERVICE._serialized_start=331
+  _AUTHSERVICE._serialized_end=521
 # @@protoc_insertion_point(module_scope)

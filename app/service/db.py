@@ -19,12 +19,6 @@ class RegisteredUsersDB:
         )
         self._save_registered_users()
 
-    def change_nickname(self, new_nickname, login):
-        for registered_user in self._registered_users:
-            if registered_user["login"] == login:
-                registered_user["nickname"] = new_nickname
-                return registered_user
-
     def exists_nickname(self, nickname):
         for registered_user in self._registered_users:
             if registered_user["nickname"] == nickname:
@@ -37,6 +31,12 @@ class RegisteredUsersDB:
                 return True
         return False
 
+    def change_user_nickname(self, login, password, new_nickname):
+        user = self.get(login, password)
+        user["nickname"] = new_nickname
+        self._save_registered_users()
+        return user
+
     def _load_registered_users(self):
         if os.path.exists("registered_users.json"):
             with open("registered_users.json") as json_file:
@@ -45,3 +45,4 @@ class RegisteredUsersDB:
     def _save_registered_users(self):
         with open("registered_users.json", "w") as json_file:
             json.dump(self._registered_users, json_file)
+

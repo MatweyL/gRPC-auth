@@ -1,10 +1,10 @@
 syntax = "proto3";
 
 service AuthService {
-  rpc Register(RegistrationData) returns (stream Response) {}
-  rpc Auth(AuthData) returns (stream Response) {}
-  rpc ChangeNickname(NewNicknameData) returns (stream Response) {}
-  rpc Logout(LogoutData) returns (stream Response) {}
+  rpc Register(RegistrationData) returns (ResponseData) {}
+  rpc Auth(AuthData) returns (ResponseData) {}
+  rpc ChangeNickname(NewNicknameData) returns (ResponseData) {}
+  rpc Logout(LogoutData) returns (ResponseData) {}
 }
 
 message RegistrationData {
@@ -29,7 +29,7 @@ message LogoutData {
   string password = 3;
 }
 
-message Response {
+message ResponseData {
   bool success = 1;
   string nickname = 2;
   string login = 3;

@@ -1,10 +1,11 @@
 from hashlib import md5
 
+
 import app.app_pb2
 
 
 def to_pb2(success, nickname, login, info):
-    return app.app_pb2.Response(
+    return app.app_pb2.ResponseData(
         success=success,
         nickname=nickname,
         login=login,
@@ -13,7 +14,6 @@ def to_pb2(success, nickname, login, info):
 
 
 def from_pb2_response_to_tuple(response):
-    print(response)
     return response.success, response.login, response.nickname, response.info
 
 

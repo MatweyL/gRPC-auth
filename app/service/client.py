@@ -26,7 +26,7 @@ class Client:
         with grpc.insecure_channel(self._host) as channel:
             stub = app.app_pb2_grpc.AuthServiceStub(channel)
             response = stub.Register(app.app_pb2.RegistrationData(nickname=nickname, login=login, password=password))
-        return from_pb2_response_to_tuple(response)
+            return from_pb2_response_to_tuple(response)
 
     def logout(self):
         with grpc.insecure_channel(self._host) as channel:
@@ -47,10 +47,6 @@ class Client:
 
 def run():
     client = Client()
-    client.register("1", "1", "1")
-    # DEBUG
-
-    return
     print("register - регистрация в системе\nlogin - вход в систему\nlogout - выход из системы\nchange - изменить никнейм\nexit - завершить сеанс")
     while True:
         cmd = input("> ")
@@ -70,7 +66,7 @@ def run():
                 response = client.login(login, password)
                 print(response[3])
                 if response[0]:
-                    print(f"Привет, {response[2]}!")
+                    print(f"Привет, {response[1]}!")
             else:
                 print("Некорректные данные")
         elif cmd == "logout":
@@ -81,6 +77,8 @@ def run():
             if new_nickname:
                 response = client.change_nickname(new_nickname)
                 print(response[3])
+                if response[0]:
+                    print(f"Новый никнейм: {response[1]}")
             else:
                 print("Некорректные данные")
         elif cmd == "exit":
